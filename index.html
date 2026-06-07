@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Taller</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://images.seeklogo.com/logo-png/14/2/tm-racing-logo-png_seeklogo-140426.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://images.seeklogo.com/logo-png/14/2/tm-racing-logo-png_seeklogo-140426.png">
+  <link rel="apple-touch-icon" href="https://images.seeklogo.com/logo-png/14/2/tm-racing-logo-png_seeklogo-140426.png">
+
+  <meta name="theme-color" content="#000000">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient-layer" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div id="appShell" class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <img class="brand-logo" src="assets/logo.png" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+        <span class="brand-mark">TM</span>
+        <div>
+          <strong>Taller central de arreglos
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Menu principal">
+        <button class="nav-link is-active" data-view="dashboard">Inicio</button>
+        <button class="nav-link" data-view="clientes">Clientes</button>
+        <button class="nav-link" data-view="autos">Autos</button>
+        <button class="nav-link" data-view="turnos">Turnos</button>
+        <button class="nav-link" data-view="servicios">Servicios</button>
+        <button class="nav-link" data-view="mecanicos">Mecanicos</button>
+        <button class="nav-link" data-view="manoObra">Mano de Obra</button>
+      </nav>
+
+      <div class="sidebar-footer">
+
+        <span id="syncState">Sin sincronizar</span>
+        <button id="refreshBtn" class="ghost-button" type="button">Actualizar</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button id="menuToggle" class="icon-button mobile-only" type="button" aria-label="Abrir menu">MENU</button>
+        <div>
+          <h1 id="viewTitle">Bienvenido! </h1>
+          <p id="viewSubtitle">Resumen general del taller</p>
+        </div>
+        <div class="topbar-telemetry" aria-label="Estado del sistema">
+          <div>
+            <span>Fecha</span>
+            <strong id="todayLabel">--/--/----</strong>
+          </div>
+          <div>
+            <span>Hora</span>
+            <strong id="clockLabel">--:--:--</strong>
+          </div>
+          <div>
+            <span>Estado</span>
+            <strong class="system-ok">Operativo</strong>
+          </div>
+        </div>
+      </header>
+
+      <section id="dashboardView" class="view is-active">
+        <div class="dashboard-hero">
+          <div class="hero-copy">
+            <h2>TALLER PERFORMANCE CENTER</h2>
+            <p>Gestion de turnos, unidades, servicios y equipo tecnico con datos reales en un entorno de competicion.</p>
+          </div>
+
+        </div>
+        <div class="stats-grid" id="statsGrid"></div>
+      </section>
+
+      <section id="clientesView" class="view">
+        <div class="section-toolbar">
+          <input id="clientesSearch" class="search-input" type="search" placeholder="Buscar clientes">
+          <button class="primary-button" type="button" data-action="new" data-entity="clientes">Nuevo Cliente</button>
+        </div>
+        <div class="table-wrap"><table id="clientesTable"></table></div>
+      </section>
+
+      <section id="autosView" class="view">
+        <div class="section-toolbar">
+          <input id="autosSearch" class="search-input" type="search" placeholder="Buscar autos">
+          <button class="primary-button" type="button" data-action="new" data-entity="autos">Nuevo Auto</button>
+        </div>
+        <div class="table-wrap"><table id="autosTable"></table></div>
+      </section>
+
+      <section id="turnosView" class="view">
+        <div class="section-toolbar">
+          <div class="segmented" role="group" aria-label="Filtros de turnos">
+            <button class="is-active" type="button" data-turno-filter="hoy">Hoy</button>
+            <button type="button" data-turno-filter="proximos">Proximos</button>
+            <button type="button" data-turno-filter="todos">Todos</button>
+          </div>
+          <button class="primary-button" type="button" data-action="new" data-entity="turnos">Nuevo Turno</button>
+        </div>
+        <div class="table-wrap"><table id="turnosTable"></table></div>
+      </section>
+
+      <section id="serviciosView" class="view">
+        <div class="section-toolbar">
+          <input id="serviciosSearch" class="search-input" type="search" placeholder="Buscar servicios">
+          <button class="primary-button" type="button" data-action="new" data-entity="servicios">Nuevo Servicio</button>
+        </div>
+        <div class="table-wrap"><table id="serviciosTable"></table></div>
+      </section>
+
+      <section id="mecanicosView" class="view">
+        <div class="section-toolbar">
+          <input id="mecanicosSearch" class="search-input" type="search" placeholder="Buscar mecanicos">
+          <button class="primary-button" type="button" data-action="new" data-entity="mecanicos">Nuevo Mecanico</button>
+        </div>
+        <div class="table-wrap"><table id="mecanicosTable"></table></div>
+      </section>
+
+      <section id="manoObraView" class="view">
+        <div class="section-toolbar">
+          <input id="manoObraSearch" class="search-input" type="search" placeholder="Buscar mano de obra">
+          <button class="primary-button" type="button" data-action="new" data-entity="manoObra">Nueva Mano de Obra</button>
+        </div>
+        <div class="table-wrap"><table id="manoObraTable"></table></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="loader" class="loader is-visible">
+    <div class="spinner"></div>
+    <span>Cargando datos reales...</span>
+  </div>
+
+  <div id="toastHost" class="toast-host" aria-live="polite"></div>
+
+  <div id="modalBackdrop" class="modal-backdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <header class="modal-header">
+        <h2 id="modalTitle">Formulario</h2>
+        <button id="modalClose" class="icon-button" type="button" aria-label="Cerrar">X</button>
+      </header>
+      <form id="entityForm" class="entity-form">
+        <div id="formFields" class="form-grid"></div>
+        <footer class="modal-actions">
+          <button id="deleteBtn" class="danger-button" type="button" hidden>Eliminar</button>
+          <span class="modal-spacer"></span>
+          <button class="secondary-button" type="button" data-close-modal>Cancelar</button>
+          <button class="primary-button" type="submit">Guardar</button>
+        </footer>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
